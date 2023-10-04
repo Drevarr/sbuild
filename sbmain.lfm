@@ -1,0 +1,405 @@
+object sb: Tsb
+  Left = 1957
+  Height = 666
+  Top = 1520
+  Width = 1032
+  Caption = 'ship builder'
+  ClientHeight = 666
+  ClientWidth = 1032
+  Position = poDefault
+  LCLVersion = '2.2.6.0'
+  object Label1: TLabel
+    Left = 255
+    Height = 32
+    Top = 16
+    Width = 96
+    AutoSize = False
+    Caption = 'Hull type'
+    Layout = tlCenter
+    ParentColor = False
+  end
+  object hull: TComboBox
+    Left = 344
+    Height = 31
+    Top = 16
+    Width = 128
+    ItemHeight = 0
+    ItemIndex = 0
+    Items.Strings = (
+      'sloop'
+      'yacht'
+      'clipper'
+      'ketch'
+      'caravel'
+      'carrack'
+      'galleon'
+      'corvette'
+      'destroyer'
+      'frigate'
+      'cruiser'
+    )
+    OnChange = hullChange
+    Style = csDropDownList
+    TabOrder = 0
+    Text = 'sloop'
+  end
+  object ldisplacement: TLabel
+    Left = 168
+    Height = 23
+    Top = 16
+    Width = 64
+    AutoSize = False
+    Caption = '?'
+    ParentColor = False
+  end
+  object weapons: TStringGrid
+    Left = 255
+    Height = 355
+    Top = 64
+    Width = 505
+    ColCount = 3
+    Columns = <    
+      item
+        ButtonStyle = cbsPickList
+        PickList.Strings = (
+          'Small Ballistae'
+          'Medium Ballistae'
+          'Large Ballistae'
+          'Small Catapult'
+          'Medium Catapult'
+          'Large Catapult'
+          'Heavy Ballistae'
+          'Light Beamcannon'
+          'Heavy Beamcannon'
+          'Mind Blast Cannon'
+          'Fragmentation Cannon'
+          'Long Tom Catapult'
+        )
+        Title.Caption = 'Name'
+        Width = 256
+      end    
+      item
+        ButtonStyle = cbsPickList
+        PickList.Strings = (
+          'Forward'
+          'Port'
+          'Rear'
+          'Starboard'
+        )
+        Title.Caption = 'Position'
+        Width = 128
+      end    
+      item
+        ButtonStyle = cbsButtonColumn
+        Title.Caption = ''
+        Width = 32
+      end>
+    FixedCols = 0
+    Options = [goFixedVertLine, goFixedHorzLine, goVertLine, goHorzLine, goRangeSelect, goEditing, goSmoothScroll]
+    RowCount = 1
+    TabOrder = 1
+    OnButtonClick = weaponsButtonClick
+  end
+  object msg: TLabel
+    Left = 255
+    Height = 23
+    Top = 600
+    Width = 76
+    Caption = 'pick a hull!'
+    Font.Color = clRed
+    ParentColor = False
+    ParentFont = False
+  end
+  object nwName: TComboBox
+    Left = 255
+    Height = 31
+    Top = 424
+    Width = 256
+    ItemHeight = 0
+    ItemIndex = 0
+    Items.Strings = (
+      'Small Ballistae'
+      'Medium Ballistae'
+      'Large Ballistae'
+      'Small Catapult'
+      'Medium Catapult'
+      'Large Catapult'
+      'Heavy Ballistae'
+      'Light Beamcannon'
+      'Heavy Beamcannon'
+      'Mind Blast Cannon'
+      'Fragmentation Cannon'
+      'Long Tom Catapult'
+    )
+    Style = csDropDownList
+    TabOrder = 2
+    Text = 'Small Ballistae'
+  end
+  object nwPosition: TComboBox
+    Left = 520
+    Height = 31
+    Top = 424
+    Width = 128
+    ItemHeight = 0
+    ItemIndex = 0
+    Items.Strings = (
+      'Forward'
+      'Port'
+      'Rear'
+      'Starboard'
+    )
+    Style = csDropDownList
+    TabOrder = 3
+    Text = 'Forward'
+  end
+  object nwAdd: TButton
+    Left = 648
+    Height = 32
+    Top = 424
+    Width = 32
+    Caption = '+'
+    OnClick = nwAddClick
+    TabOrder = 4
+  end
+  object equip: TCheckGroup
+    Left = 255
+    Height = 105
+    Top = 472
+    Width = 505
+    AutoFill = True
+    Caption = 'Equipment'
+    ChildSizing.LeftRightSpacing = 6
+    ChildSizing.TopBottomSpacing = 6
+    ChildSizing.EnlargeHorizontal = crsHomogenousChildResize
+    ChildSizing.EnlargeVertical = crsHomogenousChildResize
+    ChildSizing.ShrinkHorizontal = crsScaleChilds
+    ChildSizing.ShrinkVertical = crsScaleChilds
+    ChildSizing.Layout = cclLeftToRightThenTopToBottom
+    ChildSizing.ControlsPerLine = 1
+    ClientHeight = 80
+    ClientWidth = 501
+    Items.Strings = (
+      'Bronze Plated Ram'
+      'Zentharium Levistone'
+      'Diplomat''s Flag'
+    )
+    OnItemClick = equipItemClick
+    TabOrder = 5
+    Data = {
+      03000000020202
+    }
+  end
+  object Bevel1: TBevel
+    Left = 776
+    Height = 561
+    Top = 16
+    Width = 16
+    Shape = bsLeftLine
+  end
+  object Bevel2: TBevel
+    Left = 232
+    Height = 561
+    Top = 16
+    Width = 16
+    Shape = bsLeftLine
+  end
+  object Label2: TLabel
+    Left = 16
+    Height = 23
+    Top = 16
+    Width = 100
+    Caption = 'Displacement:'
+    ParentColor = False
+  end
+  object lgearwt: TLabel
+    Left = 168
+    Height = 23
+    Top = 40
+    Width = 64
+    AutoSize = False
+    Caption = '?'
+    ParentColor = False
+  end
+  object Label3: TLabel
+    Left = 16
+    Height = 23
+    Top = 40
+    Width = 90
+    Caption = 'Gear weight:'
+    ParentColor = False
+  end
+  object GroupBox1: TGroupBox
+    Left = 784
+    Height = 144
+    Top = 16
+    Width = 194
+    Caption = 'Crew'
+    ClientHeight = 119
+    ClientWidth = 190
+    TabOrder = 6
+    object Label4: TLabel
+      Left = 8
+      Height = 31
+      Top = 8
+      Width = 48
+      AutoSize = False
+      Caption = 'deck'
+      Layout = tlCenter
+      ParentColor = False
+    end
+    object Label5: TLabel
+      Left = 8
+      Height = 31
+      Top = 40
+      Width = 48
+      AutoSize = False
+      Caption = 'gun'
+      Layout = tlCenter
+      ParentColor = False
+    end
+    object Label6: TLabel
+      Left = 8
+      Height = 31
+      Top = 72
+      Width = 48
+      AutoSize = False
+      Caption = 'maint'
+      Layout = tlCenter
+      ParentColor = False
+    end
+    object sDeck: TEdit
+      Left = 56
+      Height = 31
+      Top = 8
+      Width = 48
+      NumbersOnly = True
+      OnChange = skillChange
+      TabOrder = 0
+      Text = '0'
+    end
+    object sGun: TEdit
+      Left = 56
+      Height = 31
+      Top = 40
+      Width = 48
+      NumbersOnly = True
+      OnChange = skillChange
+      TabOrder = 2
+      Text = '0'
+    end
+    object sMaint: TEdit
+      Left = 56
+      Height = 31
+      Top = 72
+      Width = 48
+      NumbersOnly = True
+      OnChange = skillChange
+      TabOrder = 4
+      Text = '0'
+    end
+    object bDeck: TSpinEdit
+      Left = 128
+      Height = 31
+      Hint = 'bonus mod'
+      Top = 8
+      Width = 48
+      MaxValue = 9
+      OnChange = skillChange
+      TabOrder = 1
+    end
+    object bGun: TSpinEdit
+      Left = 128
+      Height = 31
+      Hint = 'bonus mod'
+      Top = 40
+      Width = 48
+      MaxValue = 9
+      OnChange = skillChange
+      TabOrder = 3
+    end
+    object bMaint: TSpinEdit
+      Left = 128
+      Height = 31
+      Hint = 'bonus mod'
+      Top = 72
+      Width = 48
+      MaxValue = 9
+      OnChange = skillChange
+      TabOrder = 5
+    end
+    object Label7: TLabel
+      Left = 112
+      Height = 31
+      Top = 8
+      Width = 12
+      AutoSize = False
+      Caption = '+'
+      Layout = tlCenter
+      ParentColor = False
+    end
+    object Label8: TLabel
+      Left = 112
+      Height = 31
+      Top = 40
+      Width = 12
+      AutoSize = False
+      Caption = '+'
+      Layout = tlCenter
+      ParentColor = False
+    end
+    object Label9: TLabel
+      Left = 112
+      Height = 31
+      Top = 72
+      Width = 12
+      AutoSize = False
+      Caption = '+'
+      Layout = tlCenter
+      ParentColor = False
+    end
+  end
+  object smod: TLabel
+    Left = 788
+    Height = 23
+    Top = 170
+    Width = 39
+    Caption = 'smod'
+    ParentColor = False
+  end
+  object Label10: TLabel
+    Left = 16
+    Height = 23
+    Top = 68
+    Width = 76
+    Caption = 'Top speed:'
+    ParentColor = False
+  end
+  object lspeed: TLabel
+    Left = 168
+    Height = 23
+    Top = 64
+    Width = 64
+    AutoSize = False
+    Caption = '?'
+    ParentColor = False
+  end
+  object gcspeed: TGroupBox
+    Left = 16
+    Height = 537
+    Top = 96
+    Width = 217
+    Caption = 'speed w/ X crates'
+    ClientHeight = 512
+    ClientWidth = 213
+    TabOrder = 7
+    object cspeed: TListBox
+      Left = 8
+      Height = 496
+      Top = 8
+      Width = 108
+      ItemHeight = 0
+      TabOrder = 0
+      TopIndex = -1
+    end
+  end
+end
