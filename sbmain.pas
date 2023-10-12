@@ -24,7 +24,6 @@ type
     Label10: TLabel;
     cspeed: TListBox;
     lspeed: TLabel;
-    smod: TLabel;
     Label2: TLabel;
     Label3: TLabel;
     Label4: TLabel;
@@ -306,7 +305,6 @@ begin
     deck_skill:=0;
     msg.Caption:='skills invalid';
   end;
-  smod.Caption:=format('%6.2f', [deck_skill]);
 
   lspeed.Caption:=inttostr(speed(wt,0,deck_skill));
   gcspeed.Enabled:=hulldata[h,16]=0;

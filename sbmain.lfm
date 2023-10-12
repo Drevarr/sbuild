@@ -358,14 +358,6 @@ object sb: Tsb
       ParentColor = False
     end
   end
-  object smod: TLabel
-    Left = 912
-    Height = 23
-    Top = 176
-    Width = 8
-    Caption = '?'
-    ParentColor = False
-  end
   object Label10: TLabel
     Left = 16
     Height = 23
@@ -401,13 +393,5 @@ object sb: Tsb
       TabOrder = 0
       TopIndex = -1
     end
-  end
-  object Label11: TLabel
-    Left = 792
-    Height = 23
-    Top = 176
-    Width = 95
-    Caption = 'effective mod'
-    ParentColor = False
   end
 end
