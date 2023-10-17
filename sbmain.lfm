@@ -381,17 +381,29 @@ object sb: Tsb
     Top = 96
     Width = 217
     Caption = 'speed w/ X crates'
-    ClientHeight = 512
+    ClientHeight = 511
     ClientWidth = 213
     TabOrder = 7
     object cspeed: TListBox
       Left = 8
-      Height = 496
-      Top = 8
-      Width = 108
+      Height = 480
+      Top = 24
+      Width = 196
+      Font.Pitch = fpFixed
       ItemHeight = 0
+      ParentFont = False
       TabOrder = 0
       TopIndex = -1
+    end
+    object Label11: TLabel
+      Left = 16
+      Height = 24
+      Top = 0
+      Width = 122
+      Caption = '#c    spd   tput'
+      Font.Pitch = fpFixed
+      ParentColor = False
+      ParentFont = False
     end
   end
 end

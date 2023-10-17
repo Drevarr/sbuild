@@ -277,7 +277,7 @@ end;
 
 procedure Tsb.recalc;
 var
-  wt,i,h,maxwt:integer;
+  wt,i,h,maxwt,sp:integer;
   deck_skill, repa_skill:single;
 begin
   h:=hull.ItemIndex;
@@ -309,8 +309,12 @@ begin
   lspeed.Caption:=inttostr(speed(wt,0,deck_skill));
   gcspeed.Enabled:=hulldata[h,16]=0;
   cspeed.Clear;
-  for i:=1 to hulldata[h,7]
-    do cspeed.Items.Add('%2d'#9'%3d', [i,speed(wt,i,deck_skill)]);
+  for i:=0 to hulldata[h,7]
+    do begin
+         sp:=speed(wt,i,deck_skill);
+         cspeed.Items.Add('%2d'#9'%3d'#9'%4d', [i, sp, i*sp]);
+    end;
+
 end;
 
 
